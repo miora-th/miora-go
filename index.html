@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MIORA</title>
+<style>
+  :root { --ink: #1c1b22; --sub: #6b6a73; --line: #06c755; --bg: #ffffff; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 32px 20px;
+    font-family: -apple-system, "Sukhumvit Set", "Noto Sans Thai", system-ui, sans-serif;
+    text-align: center;
+  }
+  img { width: 180px; height: auto; margin-bottom: 28px; }
+  p.lead { font-size: 18px; line-height: 1.6; margin: 0 0 28px; }
+  a.go {
+    display: block; width: 100%; max-width: 360px; padding: 18px 16px; border-radius: 14px;
+    background: var(--line); color: #fff; font-size: 20px; font-weight: 700;
+    text-decoration: none;
+  }
+  a.go:active { opacity: .85; }
+  .alt { margin-top: 28px; font-size: 14px; color: var(--sub); line-height: 1.7; }
+  .alt b { color: var(--ink); }
+  button {
+    margin-left: 8px; padding: 4px 12px; border: 1px solid #c9c8ce; border-radius: 8px;
+    background: #fff; color: var(--ink); font: inherit; font-size: 13px;
+  }
+</style>
+<script src="config.js"></script>
+<script src="relay.js"></script>
+</head>
+<body>
+  <img src="logo.png" width="360" height="217" alt="MIORA">
+  <p class="lead">สอบถามรูปจริงและราคาได้ทาง LINE ค่ะ</p>
+  <a id="go" class="go" href="https://line.me/R/oaMessage/%40miora.official/">สอบถามทาง LINE</a>
+  <div class="alt">
+    ถ้า LINE ไม่เปิด ค้นหาไอดีนี้ใน LINE<br>
+    LINE ID: <b id="line-id">@miora.official</b><button id="copy" type="button" data-done="คัดลอกแล้ว">คัดลอก</button>
+  </div>
+</body>
+</html>

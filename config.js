@@ -3,7 +3,7 @@
 // Edit this file only; index.html and relay.js stay as they are.
 window.MIORA_CONFIG = {
   // Meta Pixel ID (numbers only). Empty = the pixel is not loaded (for tests).
-  pixelId: '',
+  pixelId: '1861059461987624',
 
   // LINE Official Account ID, with the '@'.
   lineId: '@miora.official',

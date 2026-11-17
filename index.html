@@ -30,7 +30,9 @@
   .help b { color: var(--ink); }
   .help p { margin: 0 0 8px; }
   .help p:last-child { margin-bottom: 0; }
-  #qr-wrap { text-align: center; margin: 10px 0; }
+  /* QR only on a computer-wide screen; a phone cannot scan its own screen */
+  #qr-wrap { display: none; text-align: center; margin: 10px 0; }
+  @media (min-width: 768px) { #qr-wrap { display: block; } }
   #qr { width: 200px; height: 200px; margin: 4px auto 0; }
   #qr svg { width: 100%; height: 100%; display: block; }
   button {

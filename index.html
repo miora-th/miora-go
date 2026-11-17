@@ -4,42 +4,94 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>MIORA</title>
+<title>MIORA แหวนเงินแท้ S925 โมอิสซาไนต์</title>
+<meta name="description" content="แหวนเงินแท้ S925 ชุบโรเดียม หินโมอิสซาไนต์ พร้อมใบรับรอง GRA ราคา 1,790 – 2,990 บาท สอบถามทาง LINE @miora.official">
 <style>
-  :root { --ink: #1c1b22; --sub: #6b6a73; --line: #06c755; --bg: #ffffff; }
+  :root { --ink: #1c1b22; --sub: #6b6a73; --line: #06c755; --bg: #ffffff; --soft: #f6f6f8; --rule: #e4e3e8; }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--ink); }
   body {
-    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
-    justify-content: center; padding: 32px 20px;
     font-family: -apple-system, "Sukhumvit Set", "Noto Sans Thai", system-ui, sans-serif;
-    text-align: center;
+    line-height: 1.6;
   }
-  img { width: 180px; height: auto; margin-bottom: 28px; }
-  p.lead { font-size: 18px; line-height: 1.6; margin: 0 0 28px; }
+  main { max-width: 440px; margin: 0 auto; padding: 28px 20px 36px; text-align: center; }
+  .logo { width: 160px; height: auto; margin: 0 auto 18px; display: block; }
+  p.lead { font-size: 18px; margin: 0 0 20px; }
   a.go {
-    display: block; width: 100%; max-width: 360px; padding: 18px 16px; border-radius: 14px;
+    display: block; width: 100%; padding: 18px 16px; border-radius: 14px;
     background: var(--line); color: #fff; font-size: 20px; font-weight: 700;
     text-decoration: none;
   }
   a.go:active { opacity: .85; }
-  .alt { margin-top: 28px; font-size: 14px; color: var(--sub); line-height: 1.7; }
-  .alt b { color: var(--ink); }
+  .help {
+    margin-top: 16px; padding: 14px 16px; border-radius: 12px; background: var(--soft);
+    font-size: 14px; color: var(--sub); text-align: left;
+  }
+  .help b { color: var(--ink); }
+  .help p { margin: 0 0 8px; }
+  .help p:last-child { margin-bottom: 0; }
+  #qr-wrap { text-align: center; margin: 10px 0; }
+  #qr { width: 200px; height: 200px; margin: 4px auto 0; }
+  #qr svg { width: 100%; height: 100%; display: block; }
   button {
-    margin-left: 8px; padding: 4px 12px; border: 1px solid #c9c8ce; border-radius: 8px;
+    margin-left: 8px; padding: 2px 12px; border: 1px solid #c9c8ce; border-radius: 8px;
     background: #fff; color: var(--ink); font: inherit; font-size: 13px;
   }
+  h2 { font-size: 17px; margin: 32px 0 12px; }
+  .rings { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rings figure { margin: 0; padding: 8px 6px; border: 1px solid var(--rule); border-radius: 12px; }
+  .rings img { width: 100%; height: auto; display: block; }
+  .rings figcaption { font-size: 13px; margin-top: 4px; }
+  .note { font-size: 12px; color: var(--sub); margin: 8px 0 0; }
+  dl.facts { text-align: left; margin: 0; border-top: 1px solid var(--rule); }
+  dl.facts div { display: flex; gap: 12px; padding: 10px 2px; border-bottom: 1px solid var(--rule); font-size: 15px; }
+  dl.facts dt { flex: 0 0 84px; color: var(--sub); }
+  dl.facts dd { margin: 0; }
+  footer { margin-top: 32px; font-size: 13px; color: var(--sub); }
+  footer a { color: var(--sub); }
 </style>
 <script src="config.js"></script>
+<script src="qrcode.js"></script>
 <script src="relay.js"></script>
 </head>
 <body>
-  <img src="logo.png" width="360" height="217" alt="MIORA">
+<main>
+  <img class="logo" src="logo.png" width="360" height="217" alt="MIORA">
   <p class="lead">สอบถามรูปจริงและราคาได้ทาง LINE ค่ะ</p>
   <a id="go" class="go" href="https://line.me/R/oaMessage/%40miora.official/">สอบถามทาง LINE</a>
-  <div class="alt">
-    ถ้า LINE ไม่เปิด ค้นหาไอดีนี้ใน LINE<br>
-    LINE ID: <b id="line-id">@miora.official</b><button id="copy" type="button" data-done="คัดลอกแล้ว">คัดลอก</button>
+
+  <div class="help">
+    <p><b>ถ้า LINE ไม่เปิด</b> แตะ ⋯ ที่มุมขวาบน แล้วเลือก "เปิดในเบราว์เซอร์" จากนั้นกดปุ่มอีกครั้ง</p>
+    <div id="qr-wrap">
+      หรือสแกน QR โค้ดนี้
+      <div id="qr"></div>
+    </div>
+    <p>หรือค้นหาไอดีนี้ใน LINE<br>
+      LINE ID: <b id="line-id">@miora.official</b><button id="copy" type="button" data-done="คัดลอกแล้ว">คัดลอก</button></p>
   </div>
+
+  <h2>แหวนของ MIORA</h2>
+  <div class="rings">
+    <figure><img src="img/aura.jpg" width="300" height="208" alt="MIORA AURA" loading="lazy"><figcaption>MIORA AURA</figcaption></figure>
+    <figure><img src="img/yes.jpg" width="300" height="208" alt="MIORA YES" loading="lazy"><figcaption>MIORA YES</figcaption></figure>
+    <figure><img src="img/timeless.jpg" width="300" height="208" alt="MIORA TIMELESS" loading="lazy"><figcaption>MIORA TIMELESS</figcaption></figure>
+    <figure><img src="img/frameme.jpg" width="300" height="208" alt="MIORA FRAME ME" loading="lazy"><figcaption>MIORA FRAME ME</figcaption></figure>
+  </div>
+  <p class="note">ภาพตัวอย่างสินค้า ขอดูรูปจริงได้ทาง LINE ค่ะ</p>
+
+  <h2>รายละเอียดสินค้า</h2>
+  <dl class="facts">
+    <div><dt>ราคา</dt><dd>1,790 – 2,990 บาท</dd></div>
+    <div><dt>วัสดุ</dt><dd>เงินแท้ S925 ชุบโรเดียม</dd></div>
+    <div><dt>หิน</dt><dd>โมอิสซาไนต์ (Moissanite) ค่ะ ไม่ใช่เพชรธรรมชาติ</dd></div>
+    <div><dt>ใบรับรอง</dt><dd>มาพร้อมใบรับรอง GRA ที่ระบุว่าเป็นโมอิสซาไนต์ และรายละเอียดของหิน</dd></div>
+    <div><dt>ติดต่อ</dt><dd>LINE @miora.official</dd></div>
+  </dl>
+
+  <footer>
+    <a href="privacy.html">นโยบายความเป็นส่วนตัว</a><br>
+    © MIORA
+  </footer>
+</main>
 </body>
 </html>

@@ -4,7 +4,7 @@
 (function (root) {
   'use strict';
 
-  /** 'A01_AURA_tester' -> 'A01'; anything else -> ''. */
+  /** 'A01_AURA_macroA' -> 'A01'; anything else -> ''. */
   function adCodeFrom(adName) {
     var m = /^([A-Z]\d{2})_/.exec(String(adName || '').trim());
     return m ? m[1] : '';
@@ -25,7 +25,24 @@
     return 'https://line.me/R/oaMessage/' + encodeURIComponent(lineId) + '/?' + encodeURIComponent(text);
   }
 
-  var api = { adCodeFrom: adCodeFrom, messageFor: messageFor, lineUrl: lineUrl };
+  /**
+   * Click handler for the LINE button. Contact is sent once per page view;
+   * LINE opens delayMs after it so the event can leave the page. Taps while
+   * waiting are ignored; taps after that (back from LINE) open LINE at once.
+   * @param {Object} o { track(), go(), later(fn, ms), delayMs }
+   */
+  function makeOpener(o) {
+    var state = 'idle'; // idle -> waiting -> done
+    return function () {
+      if (state === 'waiting') return;
+      if (state === 'done') { o.go(); return; }
+      state = 'waiting';
+      try { o.track(); } catch (e) { /* the pixel must never block LINE */ }
+      o.later(function () { state = 'done'; o.go(); }, o.delayMs);
+    };
+  }
+
+  var api = { adCodeFrom: adCodeFrom, messageFor: messageFor, lineUrl: lineUrl, makeOpener: makeOpener };
   if (typeof module !== 'undefined' && module.exports) { module.exports = api; return; }
 
   // ---------------------------------------------------------------- browser
@@ -49,11 +66,12 @@
     root.fbq('track', 'PageView');
   }
 
-  function openLine(ev) {
-    ev.preventDefault();
-    if (root.fbq) root.fbq('track', 'Contact');
-    root.setTimeout(function () { root.location.href = url; }, config.openDelayMs || 300);
-  }
+  var openLine = makeOpener({
+    track: function () { if (root.fbq) root.fbq('track', 'Contact'); },
+    go: function () { root.location.href = url; },
+    later: function (fn, ms) { root.setTimeout(fn, ms); },
+    delayMs: config.openDelayMs || 300,
+  });
 
   function copyId() {
     var btn = document.getElementById('copy');
@@ -75,11 +93,27 @@
     }
   }
 
+  /** QR of the same LINE link (for a second phone or a computer). */
+  function drawQr() {
+    var box = document.getElementById('qr');
+    if (!box) return;
+    try {
+      var qr = root.qrcode(0, 'L');
+      qr.addData(url);
+      qr.make();
+      box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
+    } catch (e) {
+      var wrap = document.getElementById('qr-wrap');
+      if (wrap) wrap.style.display = 'none';
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var go = document.getElementById('go');
     go.href = url; // works even if the script below fails
-    go.addEventListener('click', openLine);
+    go.addEventListener('click', function (ev) { ev.preventDefault(); openLine(); });
     document.getElementById('line-id').textContent = config.lineId;
     document.getElementById('copy').addEventListener('click', copyId);
+    drawQr();
   });
 })(typeof window !== 'undefined' ? window : this);
